@@ -1,28 +1,17 @@
 <?php
 /*
- * TODO:
- * implement controller with class, singleton
- * 
- * e.g, 
- * class Example extend PigController{
- *     function greeting(){
- *         $this->render();
- *     }
- *     function intro(){
- *         $this->render();
- *     }
- * }
- * ------------------------------------------------------------------
- * 
-
-
-class PigFramework(){
-    static $current_controller = null;
-    function __construct(){
-        $current_controller = 'the_controller';
-    }
-}
-
+ * PRINCIPLE:
+ * if you need something like dictionary, use stdClass rather than associative array
+ * I dont like fucking associative array. array should be fucking array
+        $book = (object) array(
+        "name" => "Harry Potter and the Prisoner of Azkaban",
+        "author" => "J. K. Rowling",
+        "publisher" => "Arthur A. Levine Books",
+        "amazon_link" => "http://www.amazon.com/dp/0439136369/"
+        );
+   
+   convention over configuration.
+   dont configure anything. 
 */
  
 class PigFramework{
@@ -45,15 +34,20 @@ class PigFramework{
     }    
     
     function run(){
-        # $action = basename($_SERVER['REQUEST_URI']);
         $url_segments = explode('/', $_SERVER['REQUEST_URI']);
-        $controller_name = $url_segments[2];
-        $method_name = $url_segments[3];
-
-        if ( $method_name === ''){
+        if (count($url_segments) == 4){
+            $controller_name = $url_segments[2];
+            $method_name = $url_segments[3];              
+        }
+        else if (count($url_segments) == 3){
+            $controller_name = $url_segments[2];
             $method_name = 'index';
         }
-        
+        else if (count($url_segments) == 2){
+            $controller_name = 'example';
+            $method_name = 'index';
+        }
+                
         $this->current_controller = $controller_name;
         $this->current_method = $method_name;
 
@@ -65,9 +59,7 @@ class PigFramework{
   
         call_user_func( array( $controller, $method_name ) );      
     }
-    
 
-    
     function enable_production_mode(){
         // actually, I don't know how to set them ..
         // figure it out sometime ;)        
@@ -76,9 +68,6 @@ class PigFramework{
         error_reporting(-1);
         error_reporting(E_ALL);
     }
-    
-
-  
 }
 
 
