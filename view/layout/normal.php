@@ -34,7 +34,7 @@
     <li><a href='/index.php/contact'>CONTACT</a></li>
 </ul>
 
-<?php echo $content?>
+<?php echo $main?>
 
 <div id="footer" class="container">
     <nav class="navbar navbar-default navbar-fixed-bottom">
