@@ -1,4 +1,35 @@
 <?php
+/*
+ * TODO:
+ * implement controller with class, singleton
+ * 
+ * e.g, 
+ * class Example extend PigController{
+ *     function greeting(){
+ *         $this->render();
+ *     }
+ *     function intro(){
+ *         $this->render();
+ *     }
+ * }
+ * ------------------------------------------------------------------
+ * 
+class PigController{
+    static $current_action = null;
+    function __construct(){
+        $current_action = 'the_action';
+    }
+}
+
+class PigFramework(){
+    static $current_controller = null;
+    function __construct(){
+        $current_controller = 'the_controller';
+    }
+}
+
+*/
+ 
 class PigFramework{
     private $current_action = null;
     
@@ -115,5 +146,5 @@ class PigFramework{
 
 
 $pig = new PigFramework;
-$pig->enable_production_mode();
+# $pig->enable_production_mode();
 $pig->run();
