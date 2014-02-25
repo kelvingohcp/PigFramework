@@ -1,52 +1,51 @@
 <?php
-    // change this to false if the app is in production
-    define('IS_DEVELOPING', true);    
+class PigFramework{
+    private $current_action = null;
+    
+    function run(){
+        $action = basename($_SERVER['REQUEST_URI']);
 
-    // only show error messages while developing
-    if (IS_DEVELOPING){
+        if ( $action === ''){
+            $action = 'index';
+        }
+        
+        $this->current_action = $action;
+
+       call_user_func( array( $this, $action ) );      
+    }
+    
+    function __construct(){
+        // change this to false if the app is in production
+        define('IS_DEVELOPING', true);    
+
+        // only show error messages while developing
+        if (IS_DEVELOPING){
+            ini_set('display_errors',1);
+            ini_set('display_startup_errors',1);
+            error_reporting(-1);
+            error_reporting(E_ALL);
+        }
+       
+        define('BASEPATH', __DIR__);
+    }
+    
+    function enable_production_mode(){
+        // actually, I don't know how to set them ..
+        // figure it out sometime ;)        
         ini_set('display_errors',1);
         ini_set('display_startup_errors',1);
         error_reporting(-1);
         error_reporting(E_ALL);
     }
-   
-    define('BASEPATH', __DIR__);
-
-    $action = basename($_SERVER['REQUEST_URI']);
-
     
-    if ( $action === ''){
-        $action = 'index';
-    }
 
-    call_user_func($action);
-    
     function index(){
-        $file_name = __FUNCTION__ . '.php';
-        
-        $file_path = BASEPATH . '/view/' . $file_name;
-        // $output = file_get_contents($file_name);
-
-        echo fetch($file_path);      
+        $this->render();
     }
     
     function service(){
-        $file_name = __FUNCTION__ . '.php';
-        
-        $file_path = BASEPATH . '/view/' . $file_name;
-        // $output = file_get_contents($file_name);
-
-        echo fetch($file_path);      
-    }    
-    
-    function contact(){
-        $file_name = __FUNCTION__ . '.php';
-        
-        $file_path = BASEPATH . '/view/' . $file_name;
-        // $output = file_get_contents($file_name);
-
-        echo fetch($file_path);      
-    }    
+        $this->render();
+    }
     
     function product(){
         $array = array(
@@ -71,12 +70,17 @@
         
         $data = array('books'=>$books);
 
-        $file_name = __FUNCTION__ . '.php';
-        
+        $this->render('', $data);
+    }
+    
+    function contact(){
+        $this->render();
+    }
+    
+    function render($file_path = '', $data = []){
+        $file_name = $this->current_action  . '.php';
         $file_path = BASEPATH . '/view/' . $file_name;
-        // $output = file_get_contents($file_name);
-
-        echo fetch($file_path, $data);      
+        echo $this->fetch($file_path, $data);      
     }
 
 
@@ -105,4 +109,11 @@
         ob_end_clean();                // End buffering and discard
         return $contents;              // Return the contents
         */
-    }
+    }  
+  
+}
+
+
+$pig = new PigFramework;
+$pig->enable_production_mode();
+$pig->run();
