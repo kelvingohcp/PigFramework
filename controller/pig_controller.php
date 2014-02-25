@@ -7,7 +7,7 @@ class PigController{
     
     function render($file_path = '', $data = []){
         $file_name = self::$current_method  . '.php';
-        $file_path = BASEPATH . '/view/' . $file_name;
+        $file_path = BASEPATH . '/view/' . lcfirst(get_called_class() ) . '/' . $file_name;
         echo $this->fetch($file_path, $data);      
         
     }
