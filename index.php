@@ -17,6 +17,8 @@
 class PigFramework{
     private $current_controller = null;
     private $current_method = null;
+    private $default_controller = 'example';
+    private $default_method = 'index';
 
     function __construct(){
         // change this to false if the app is in production
@@ -41,11 +43,11 @@ class PigFramework{
         }
         else if (count($url_segments) == 3){
             $controller_name = $url_segments[2];
-            $method_name = 'index';
+            $method_name = $this->default_method;
         }
         else if (count($url_segments) == 2){
-            $controller_name = 'example';
-            $method_name = 'index';
+            $controller_name = $this->default_controller;
+            $method_name = $this->default_method;
         }
                 
         $this->current_controller = $controller_name;
