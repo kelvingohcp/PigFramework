@@ -13,7 +13,7 @@ class PigController{
     }
 
 
-    function fetch($file_path = null, $data = [], $layout = 'normal') {
+    function fetch($file_path = null, $data = [], $layout = 'default') {
         ob_start();
         extract($data);
         require($file_path);
