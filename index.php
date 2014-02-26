@@ -1,5 +1,7 @@
 <?php
-/*
+/* TODO:
+ * make model works in the framework
+ * 
  * PRINCIPLE:
  * if you need something like dictionary, use stdClass rather than associative array
  * I dont like fucking associative array. array should be fucking array

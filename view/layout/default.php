@@ -2,6 +2,7 @@
 <script src="/assets/js/jquery-1.10.2.js"></script>
 <script src="/assets/js/bootstrap.js"></script>
 <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.css">
 
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
