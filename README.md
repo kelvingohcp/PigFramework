@@ -6,12 +6,14 @@ a PHP framework for developers who are as lazy as pigs
 ## Feature
 
 * the whole framework is just ONE php file and three EMPTY folders (model/controller/view)
-* the source codes and file strucute are easy, so it's good for learning purposes
 * provide one web interface for you to create your websites IN BROWSER
+* the source codes and file strucute are easy, so it's good for learning purposes
 
 ## Does this describe you?
 
 * you are as lazy as a pig
+
+* you want to build your web apps in browser. no command line invloved
 
 * you don't want to configure anything
 
@@ -19,7 +21,6 @@ a PHP framework for developers who are as lazy as pigs
 
 * but you still wish it implements MVC pattern
 
-* you are very lazy and you hope you can develop web applications in a web interface, so you can build websites by clicking some buttons in the browder
 
 ## Principle ##
 * convention over configuration.
