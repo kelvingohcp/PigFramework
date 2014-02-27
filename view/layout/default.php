@@ -28,12 +28,17 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<ul class="nav nav-pills">
+  <li><a href="/index.php/pig_admin/index">Profile</a></li>
+</ul>
 
 <ul>
     <li><a href='/index.php/product'>PRODUCT</a></li>
     <li><a href='/index.php/service'>SERVICE</a></li>
     <li><a href='/index.php/contact'>CONTACT</a></li>
 </ul>
+
+
 
 <?php echo $main?>
 
