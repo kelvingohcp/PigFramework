@@ -14,30 +14,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="/">Brand</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-          <li class='active'><a href='/index.php/example/product'>PRODUCT</a></li>
-          <li><a href='/index.php/example/service'>SERVICE</a></li>
+          <li class='active'><a href='/index.php/example/intro'>intro</a></li>
+          <li><a href='/index.php/example/product'>PRODUCT</a></li>
           <li><a href='/index.php/example/contact'>CONTACT</a></li>
       </ul>
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<ul class="nav nav-pills">
-  <li><a href="/index.php/pig_admin/index">Profile</a></li>
-</ul>
-
-<ul>
-    <li><a href='/index.php/product'>PRODUCT</a></li>
-    <li><a href='/index.php/service'>SERVICE</a></li>
-    <li><a href='/index.php/contact'>CONTACT</a></li>
-</ul>
-
 
 
 <?php echo $main?>

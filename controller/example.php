@@ -5,10 +5,6 @@ class Example extends PigController{
         $this->render();
     }
     
-    function service(){
-        $this->render();
-    }
-    
     function product(){
         $array = array(
         "name" => "Harry Potter and the Prisoner of Azkaban",
@@ -36,6 +32,9 @@ class Example extends PigController{
     }
     
     function contact(){
+        $this->render();
+    }
+    function intro(){
         $this->render();
     }
 
