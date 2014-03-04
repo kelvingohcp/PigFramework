@@ -2,18 +2,6 @@
 /* TODO:
  * make model works in the framework
  * 
- * PRINCIPLE:
- * if you need something like dictionary, use stdClass rather than associative array
- * I dont like fucking associative array. array should be fucking array
-        $book = (object) array(
-        "name" => "Harry Potter and the Prisoner of Azkaban",
-        "author" => "J. K. Rowling",
-        "publisher" => "Arthur A. Levine Books",
-        "amazon_link" => "http://www.amazon.com/dp/0439136369/"
-        );
-   
-   convention over configuration.
-   dont configure anything. 
 */
 
 class PigController{
@@ -42,24 +30,17 @@ class PigController{
         require($layout_file_name);                // Include the file
         $contents = ob_get_contents(); // Get the contents of the buffer
         ob_end_clean();                // End buffering and discard
-        return $contents;              // Return the contents
-        
-        /*
-        ob_start();                    // Start output buffering
-        $content = file_get_contents($file_path);
-        
-        
-        $layout_file_name = BASEPATH . '/view/layout/' . $layout . '.php';
-        require($layout_file_name);                // Include the file
-        $contents = ob_get_contents(); // Get the contents of the buffer
-        ob_end_clean();                // End buffering and discard
-        return $contents;              // Return the contents
-        */
+        return $contents;              // Return the contents        
     }  
     
     
 }
 
+class PigModel{
+    function __construct__(){
+        require_once BASEPATH . '/library/rb.php';
+    }
+}
 class PigFramework{
     private $current_controller = null;
     private $current_method = null;
@@ -107,14 +88,6 @@ class PigFramework{
         call_user_func( array( $controller, $method_name ) );      
     }
 
-    function enable_production_mode(){
-        // actually, I don't know how to set them ..
-        // figure it out sometime ;)        
-        ini_set('display_errors',1);
-        ini_set('display_startup_errors',1);
-        error_reporting(-1);
-        error_reporting(E_ALL);
-    }
 }
 
 $pig = new PigFramework;
