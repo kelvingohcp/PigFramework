@@ -69,7 +69,8 @@ class PigFramework{
             $method_name = $url_segments[3];              
         }
         else if (count($url_segments) == 3){
-            $controller_name = $url_segments[2];
+        //    $controller_name = $url_segments[2];
+            $controller_name = $default_controller
             $method_name = $this->default_method;
         }
         else if (count($url_segments) == 2){
