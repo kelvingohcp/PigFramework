@@ -64,12 +64,17 @@ class PigFramework{
     
     function run(){
         $url_segments = explode('/', $_SERVER['REQUEST_URI']);
-        if (count($url_segments) == 4){
+        if (count($url_segments) == 5){
+            $controller_name = $url_segments[3];
+            $method_name = $url_segments[4];              
+        }
+        else if (count($url_segments) == 4){
             $controller_name = $url_segments[2];
             $method_name = $url_segments[3];              
         }
         else if (count($url_segments) == 3){
-            $controller_name = $url_segments[2];
+        //    $controller_name = $url_segments[2];
+            $controller_name = $this->default_controller;
             $method_name = $this->default_method;
         }
         else if (count($url_segments) == 2){
